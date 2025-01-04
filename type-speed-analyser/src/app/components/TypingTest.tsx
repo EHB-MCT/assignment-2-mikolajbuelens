@@ -1,3 +1,7 @@
+"use client";
+
+import Button from "./ui/Button";
+
 export default function TypingTest() {
   return (
     <div className="container h-screen mx-auto p-4 flex justify-center items-center">
@@ -28,10 +32,7 @@ export default function TypingTest() {
               0 WPM
             </p>
 
-            <button className="bg-blue-700   text-white hover:bg-blue-600 row-span-2">
-              {/* TODO: replace with icon */}
-              Refresh
-            </button>
+            <Button className="row-span-2" text="Reset" onClick={() => console.log("Reset")} />
             <p className="bg-blue-700  text-white flex justify-center items-center row-span-2 ">
               00:00
             </p>
