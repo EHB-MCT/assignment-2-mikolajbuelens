@@ -15,12 +15,27 @@ export default function TypingTest() {
             voluptas quod!
           </p>
         </div>
-        <div className="bg-white mt-4 p-4 rounded">
-          {/* Textarea for user input, this will be used to measure type speed */}
-          <textarea
-            className="w-full h-full focus:outline-none text-black"
-            placeholder="Start typing here..."
-          />
+        <div className="flex justify-between mt-4">
+          <div className="bg-white w-3/4  p-4 rounded">
+            {/* Textarea for user input, this will be used to measure type speed */}
+            <textarea
+              className="w-full h-full focus:outline-none text-black"
+              placeholder="Start typing here..."
+            />
+          </div>
+          <div className="grid grid-rows-4  grid-flow-col w-1/4 gap-2">
+            <p className="bg-blue-700  text-white  flex justify-center items-center row-span-4">
+              0 WPM
+            </p>
+
+            <button className="bg-blue-700   text-white hover:bg-blue-600 row-span-2">
+              {/* TODO: replace with icon */}
+              Refresh
+            </button>
+            <p className="bg-blue-700  text-white flex justify-center items-center row-span-2 ">
+              00:00
+            </p>
+          </div>
         </div>
       </div>
     </div>
