@@ -3,6 +3,11 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](https://semver.org/).
 
+## [1.0.2] - 05-01-2025
+### Added
+- Added a database connection (Supabase) to store typing test results.
+- Added a distraction when a user passes the 30 second mark while typing.
+
 
 ## [1.0.1] - 05-01-2025
 ### Added
