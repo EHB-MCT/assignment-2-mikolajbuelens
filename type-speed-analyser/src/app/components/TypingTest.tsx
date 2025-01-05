@@ -9,6 +9,7 @@ import { paragraph } from "txtgen";
 export default function TypingTest() {
   const [text, setText] = useState("");
   const [userInput, setUserInput] = useState("");
+  const [wpm, setWpm] = useState(0);
 
   useEffect(() => {
     setText(paragraph());
@@ -23,16 +24,21 @@ export default function TypingTest() {
 
         <div className="bg-blue-900 w-full p-4 text-white rounded font-mono text-lg mt-4">
           {/* Placeholder text, should be replaced with a random paragraph generator (api/npm/json) */}
-          <TextGenerator text={text}  userInput={userInput}/>
+          <TextGenerator text={text} userInput={userInput} />
         </div>
         <div className="flex justify-between mt-4">
           <div className="bg-white w-3/4  p-4 rounded">
             {/* Textarea for user input, this will be used to measure type speed */}
-            <TypingValidator text={text} userInput={userInput} setUserInput={setUserInput} />
+            <TypingValidator
+              text={text}
+              userInput={userInput}
+              setUserInput={setUserInput}
+              setWpm={setWpm}
+            />
           </div>
           <div className="grid grid-rows-4  grid-flow-col w-1/4 gap-2">
             <p className="bg-blue-700  text-white  flex justify-center items-center row-span-4">
-              0 WPM
+              {wpm} WPM
             </p>
 
             <Button

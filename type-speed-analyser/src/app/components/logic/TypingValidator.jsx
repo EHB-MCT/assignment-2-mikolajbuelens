@@ -2,9 +2,13 @@
 
 import { useState, useEffect } from "react";
 
-export default function TypingValidator({ text, userInput, setUserInput }) {
+export default function TypingValidator({
+  text,
+  userInput,
+  setUserInput,
+  setWpm,
+}) {
   let startTyping = false;
-  const [wpm, setWpm] = useState(0); // words per minute
   const [startTime, setStartTime] = useState(0); // start time
 
   useEffect(() => {
@@ -20,7 +24,7 @@ export default function TypingValidator({ text, userInput, setUserInput }) {
 
       // prevent division by zero
       if (timeElapsed > 0) {
-      const words = userInput.split(" ").length; // words typed by user
+        const words = userInput.split(" ").length; // words typed by user
         const wpm = (words / timeElapsed).toFixed(2); // words per minute, rounded to 2 decimal places
         setWpm(wpm);
       }
@@ -46,9 +50,6 @@ export default function TypingValidator({ text, userInput, setUserInput }) {
         value={userInput}
         onChange={handleInputChange}
       />
-      <p>Words per minute: {wpm}</p>
-      {/* {console.log(text)}
-      {console.log(userInput)} */}
     </>
   );
 }
