@@ -7,6 +7,7 @@ export default function TypingValidator({
   userInput,
   setUserInput,
   setWpm,
+  setStart,
 }) {
   let startTyping = false;
   const [startTime, setStartTime] = useState(0); // start time
@@ -19,6 +20,7 @@ export default function TypingValidator({
 
     if (userInput.length > 0 && startTime) {
       console.warn("start typing");
+      setStart(true);
       const currentTime = Date.now(); // current time
       const timeElapsed = (currentTime - startTime) / 60000; // time elapsed in minutes
 

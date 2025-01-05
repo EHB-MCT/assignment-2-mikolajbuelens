@@ -5,11 +5,18 @@ import Button from "./ui/Button";
 import TextGenerator from "./logic/TextGenerator";
 import TypingValidator from "./logic/TypingValidator";
 import { paragraph } from "txtgen";
+import Timer from "./logic/Timer";
 
 export default function TypingTest() {
+
+const maxTime = 60;
+
+
   const [text, setText] = useState("");
   const [userInput, setUserInput] = useState("");
   const [wpm, setWpm] = useState(0);
+  const [start, setStart] = useState(false);
+  const [timer, setTimer] = useState(maxTime);
 
   // initial text generation
   useEffect(() => {
@@ -20,8 +27,9 @@ export default function TypingTest() {
     setUserInput("");
     setWpm(0);
     setText(paragraph());
+    setStart(false);
+    setTimer(maxTime);
   }
-
 
   return (
     <div className="container h-screen mx-auto p-4 flex justify-center items-center">
@@ -42,6 +50,7 @@ export default function TypingTest() {
               userInput={userInput}
               setUserInput={setUserInput}
               setWpm={setWpm}
+              setStart={setStart}
             />
           </div>
           <div className="grid grid-rows-4  grid-flow-col w-1/4 gap-2">
@@ -54,9 +63,9 @@ export default function TypingTest() {
               text="Reset"
               onClick={() => resetTest()}
             />
-            <p className="bg-blue-700  text-white flex justify-center items-center row-span-2 ">
-              00:00
-            </p>
+            <div className="bg-blue-700  text-white flex justify-center items-center row-span-2 ">
+              <Timer wpm={wpm} start={start} timer={timer} setTimer={setTimer} />
+            </div>
           </div>
         </div>
       </div>
