@@ -13,7 +13,7 @@ export default function TypingValidator({ text }) {
     console.warn(userInput[currentIndex]);
     console.warn(text[currentIndex]);
 
-    //   validating the next lettet
+    //   validating the next letter
     if (input[currentIndex] === text[currentIndex]) {
       setUserInput(input); // if the next letter is incorrect, the input will not be updated
     }
