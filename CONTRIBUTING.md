@@ -20,11 +20,10 @@
 
 ## Branching Strategy & Naming🌳
 
-
 1. **When making a new feature or resolving a bug**, please create a new branch for each feature or bug fix.
 2. **Branch names should be descriptive. For example**, `feature/new-feature` or `bugfix/issue-123`.
 3. **Make sure your commit messages are descriptive** and follow the [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/) format.
-4. Once your branch is ready, submit a pull request to the `main` branch.
+4. Once your feature is ready, submit a pull request to the `develop` branch.
 
 ## Pull Request Process🤝
 
