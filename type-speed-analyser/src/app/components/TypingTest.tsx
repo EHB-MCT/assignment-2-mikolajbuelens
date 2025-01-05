@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, use } from "react";
 import Button from "./ui/Button";
 import TextGenerator from "./logic/TextGenerator";
 import TypingValidator from "./logic/TypingValidator";
@@ -8,16 +8,15 @@ import { paragraph } from "txtgen";
 import Timer from "./logic/Timer";
 
 export default function TypingTest() {
-
-const maxTime = 5;
-
+  const maxTime = 60;
 
   const [text, setText] = useState("");
   const [userInput, setUserInput] = useState("");
   const [wpm, setWpm] = useState(0);
   const [start, setStart] = useState(false);
   const [timer, setTimer] = useState(maxTime);
-
+  const [distraction, setDistraction] = useState(false);
+  const randomColor = Math.floor(Math.random() * 16777215).toString(16);
   // initial text generation
   useEffect(() => {
     setText(paragraph());
@@ -30,6 +29,16 @@ const maxTime = 5;
     setStart(false);
     setTimer(maxTime);
   }
+
+  // if disract == true, change colors of entire page every 5 seconds
+  useEffect(() => {
+    if (distraction) {
+      const interval = setInterval(() => {
+        document.body.style.backgroundColor = `#${randomColor}`;
+      }, 200);
+      return () => clearInterval(interval);
+    }
+  }, [distraction, randomColor]);
 
   return (
     <div className="container h-screen mx-auto p-4 flex justify-center items-center">
@@ -64,7 +73,13 @@ const maxTime = 5;
               onClick={() => resetTest()}
             />
             <div className="bg-blue-700  text-white flex justify-center items-center row-span-2 ">
-              <Timer wpm={wpm} start={start} timer={timer} setTimer={setTimer} />
+              <Timer
+                wpm={wpm}
+                start={start}
+                timer={timer}
+                setTimer={setTimer}
+                setDistraction={setDistraction}
+              />
             </div>
           </div>
         </div>

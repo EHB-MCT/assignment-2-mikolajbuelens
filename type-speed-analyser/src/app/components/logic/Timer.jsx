@@ -1,11 +1,11 @@
-'use client';
+"use client";
 
 // !This will be used to send data to the database
 
 import { useState, useEffect, use } from "react";
 import { saveWPMToDatabase } from "../../lib/supabaseUtils";
 
-export default function Timer({ wpm, start, timer, setTimer }) {
+export default function Timer({ wpm, start, timer, setTimer, setDistraction }) {
   const [wpmNoDistraction, setWpmNoDistraction] = useState(0);
   const [wpmWithDistraction, setWpmWithDistraction] = useState(0);
   const [timerExpired, setTimerExpired] = useState(false);
@@ -22,6 +22,14 @@ export default function Timer({ wpm, start, timer, setTimer }) {
     }
     return () => clearInterval(interval);
   }, [start, timer, setTimer]);
+
+  // when timer reaches 30 seconds, the user will be distracted
+  useEffect(() => {
+    if (timer === 30) {
+        console.warn("Distracted");
+      setDistraction(true);
+    }
+  }, [timer]);
 
   // save the wpm to the database when the timer reaches 0
   useEffect(() => {
