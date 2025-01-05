@@ -1,11 +1,10 @@
 "use client";
 
-import { use } from "react";
 
 // could be used for addition modifications to the text (e.g. translation)
 export default function TextGenerator({ text, userInput }) {
   {
-    console.log(userInput);
+    // console.log(userInput);
   }
   return (
     <p>

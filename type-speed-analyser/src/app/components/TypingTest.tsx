@@ -30,7 +30,7 @@ export default function TypingTest() {
             {/* Textarea for user input, this will be used to measure type speed */}
             <TypingValidator text={text} userInput={userInput} setUserInput={setUserInput} />
           </div>
-          {/* <div className="grid grid-rows-4  grid-flow-col w-1/4 gap-2">
+          <div className="grid grid-rows-4  grid-flow-col w-1/4 gap-2">
             <p className="bg-blue-700  text-white  flex justify-center items-center row-span-4">
               0 WPM
             </p>
@@ -43,7 +43,7 @@ export default function TypingTest() {
             <p className="bg-blue-700  text-white flex justify-center items-center row-span-2 ">
               00:00
             </p>
-          </div> */}
+          </div>
         </div>
       </div>
     </div>

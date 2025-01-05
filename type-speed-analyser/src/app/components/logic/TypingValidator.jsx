@@ -1,18 +1,36 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 export default function TypingValidator({ text, userInput, setUserInput }) {
   let startTyping = false;
+  const [wpm, setWpm] = useState(0); // words per minute
+  const [startTime, setStartTime] = useState(0); // start time
+
+  useEffect(() => {
+    //    the start time will be set when the user starts typing
+    if (userInput.length === 1 && !startTime) {
+      setStartTime(Date.now());
+    }
+
+    if (userInput.length > 0 && startTime) {
+      console.warn("start typing");
+      const currentTime = Date.now(); // current time
+      const timeElapsed = (currentTime - startTime) / 60000; // time elapsed in minutes
+
+      // prevent division by zero
+      if (timeElapsed > 0) {
+      const words = userInput.split(" ").length; // words typed by user
+        const wpm = (words / timeElapsed).toFixed(2); // words per minute, rounded to 2 decimal places
+        setWpm(wpm);
+      }
+    }
+  }, [userInput, startTime]);
 
   const handleInputChange = (e) => {
     startTyping = true;
     const input = e.target.value;
     const currentIndex = userInput.length; // current character index of user
-
-    console.warn(currentIndex);
-    console.warn(userInput[currentIndex]);
-    console.warn(text[currentIndex]);
 
     //   validating the next character
     if (input[currentIndex] === text[currentIndex]) {
@@ -28,6 +46,7 @@ export default function TypingValidator({ text, userInput, setUserInput }) {
         value={userInput}
         onChange={handleInputChange}
       />
+      <p>Words per minute: {wpm}</p>
       {/* {console.log(text)}
       {console.log(userInput)} */}
     </>
