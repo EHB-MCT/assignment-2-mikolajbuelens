@@ -2,10 +2,11 @@
 
 import { useState } from "react";
 
-export default function TypingValidator({ text }) {
-  const [userInput, setUserInput] = useState("");
+export default function TypingValidator({ text, userInput, setUserInput }) {
+  let startTyping = false;
 
   const handleInputChange = (e) => {
+    startTyping = true;
     const input = e.target.value;
     const currentIndex = userInput.length; // current letter index of user
 
