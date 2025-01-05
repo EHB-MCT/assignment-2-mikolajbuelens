@@ -11,9 +11,17 @@ export default function TypingTest() {
   const [userInput, setUserInput] = useState("");
   const [wpm, setWpm] = useState(0);
 
+  // initial text generation
   useEffect(() => {
     setText(paragraph());
   }, []);
+
+  function resetTest() {
+    setUserInput("");
+    setWpm(0);
+    setText(paragraph());
+  }
+
 
   return (
     <div className="container h-screen mx-auto p-4 flex justify-center items-center">
@@ -44,7 +52,7 @@ export default function TypingTest() {
             <Button
               className="row-span-2"
               text="Reset"
-              onClick={() => console.log("Reset")}
+              onClick={() => resetTest()}
             />
             <p className="bg-blue-700  text-white flex justify-center items-center row-span-2 ">
               00:00
