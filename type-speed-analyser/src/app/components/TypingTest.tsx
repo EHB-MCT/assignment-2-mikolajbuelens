@@ -9,7 +9,7 @@ import Timer from "./logic/Timer";
 
 export default function TypingTest() {
 
-const maxTime = 60;
+const maxTime = 5;
 
 
   const [text, setText] = useState("");

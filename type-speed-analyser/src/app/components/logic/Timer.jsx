@@ -1,9 +1,14 @@
+'use client';
+
 // !This will be used to send data to the database
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, use } from "react";
+import { saveWPMToDatabase } from "../../lib/supabaseUtils";
 
 export default function Timer({ wpm, start, timer, setTimer }) {
-  //   const [time, setTimer] = useState(60);
+  const [wpmNoDistraction, setWpmNoDistraction] = useState(0);
+  const [wpmWithDistraction, setWpmWithDistraction] = useState(0);
+  const [timerExpired, setTimerExpired] = useState(false);
 
   // countdown timer
   useEffect(() => {
@@ -17,6 +22,15 @@ export default function Timer({ wpm, start, timer, setTimer }) {
     }
     return () => clearInterval(interval);
   }, [start, timer, setTimer]);
+
+  // save the wpm to the database when the timer reaches 0
+  useEffect(() => {
+    if (timer === 0 && !timerExpired) {
+      setTimerExpired(true);
+      console.warn("Timer expired");
+      saveWPMToDatabase(wpmNoDistraction, wpmWithDistraction); // save the wpm to the database
+    }
+  }, [timer, timerExpired, wpmNoDistraction, wpmWithDistraction]);
 
   return (
     <>
