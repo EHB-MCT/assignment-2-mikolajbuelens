@@ -8,15 +8,15 @@ export default function TypingValidator({ text, userInput, setUserInput }) {
   const handleInputChange = (e) => {
     startTyping = true;
     const input = e.target.value;
-    const currentIndex = userInput.length; // current letter index of user
+    const currentIndex = userInput.length; // current character index of user
 
     console.warn(currentIndex);
     console.warn(userInput[currentIndex]);
     console.warn(text[currentIndex]);
 
-    //   validating the next letter
+    //   validating the next character
     if (input[currentIndex] === text[currentIndex]) {
-      setUserInput(input); // if the next letter is incorrect, the input will not be updated
+      setUserInput(input); // if the next character is incorrect, the input will not be updated
     }
   };
 
