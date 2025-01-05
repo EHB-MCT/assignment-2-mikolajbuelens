@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](https://semver.org/).
 
+
+## [1.0.1] - 06-01-2025
+### Added
+- Countdown timer added to the typing test.
+- Words per minute (WPM) calculation based on time elapsed.
+- Timer, input and generated text now resets when the test is restarted.
+
+
 ## [1.0.0] - 05-01-2025
 ### Added
 - Initial release of the typing speed test application.
